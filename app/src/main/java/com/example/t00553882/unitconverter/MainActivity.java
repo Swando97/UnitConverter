@@ -34,33 +34,34 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
+                if (!editText.getText().toString().isEmpty()) {
+
                     if (sp1.getSelectedItem().toString() == sp2.getSelectedItem().toString()) {
                         Toast.makeText(getApplicationContext(), "No conversion needed", Toast.LENGTH_LONG).show();
-                        return;
+                    } else {
 
-                    }
-                    if (editText.getText().toString().isEmpty()) {
-                        Toast.makeText(getApplicationContext(), "Please enter value", Toast.LENGTH_LONG).show();
-                        return;
-                    }
-                    //if (editText.getText() != null || !editText.getText().toString().isEmpty()) {
-                        if (sp1.getSelectedItem().toString().contains("Celsius") && sp2.getSelectedItem().toString().contains("Fahrenheit")) {
+                        if (sp1.getSelectedItem().toString().contains("Celsius")) { //&& sp2.getSelectedItem().toString().contains("Fahrenheit")) {
                             int value = (((Integer.parseInt(editText.getText().toString())) * 9) / 5) + 32;
-                            txt.setText(value);
-                        }
+                            txt.setText("" + value);
 
-                        //if(sp2.getSelectedItem().toString().contains("Fahrenheit")){
-                        else {
+                        } else {
                             int value1 = ((Integer.parseInt(editText.getText().toString()) - 32) * 5 / 9);
-                            txt.setText(value1);
-                        }
-                        // }
-                    }
+                            txt.setText("" + value1);
 
-               // }
+                        }
+                    }
+                } else{
+
+                    Toast.makeText(getApplicationContext(), "Please enter value", Toast.LENGTH_LONG).show();
+
+                }
+                    }
         });
 
     }
+
+
 
 }
 
